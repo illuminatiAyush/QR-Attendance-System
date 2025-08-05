@@ -1,0 +1,164 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Arial", sans-serif;
+}
+
+/* Dark Background */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #010a14;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Glow Effect Container */
+#glow-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    overflow: hidden;
+}
+
+
+/* Fade-out effect */
+@keyframes fadeOut {
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0; transform: scale(1.5); }
+}
+
+/* Form Box */
+.container {
+    background: rgba(5, 15, 25, 0.95);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 0 15px cyan;
+    text-align: center;
+    width: 450px;
+    border: 3px solid cyan;
+    position: relative;
+    overflow: hidden;
+    height: 100px;
+    transition: height 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+/* Expands on Hover */
+.container:hover,
+.container.active {
+    height: 480px;
+    box-shadow: 0 0 30px cyan;
+}
+
+/* Title */
+.form-title {
+    color: cyan;
+    font-size: 22px;
+    font-weight: bold;
+    text-shadow: 0 0 10px cyan;
+}
+
+/* Form Wrapper */
+.form-wrapper {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+/* Show Form on Hover */
+.container:hover .form-wrapper,
+.container.active .form-wrapper {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Labels */
+label {
+    display: block;
+    text-align: left;
+    font-size: 18px;
+    font-weight: 600;
+    color: cyan;
+    margin-top: 20px;
+    text-shadow: 0 0 8px cyan;
+}
+
+/* Input Fields */
+.hacker-text {
+    width: 100%;
+    padding: 14px;
+    font-size: 18px;
+    border: 2px solid cyan;
+    border-radius: 8px;
+    background: black;
+    color: cyan;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+    font-family: 'Courier New', monospace;
+}
+
+/* Input Focus Glow */
+.hacker-text:focus {
+    border-color: cyan;
+    box-shadow: 0 0 10px cyan;
+}
+
+/* Buttons */
+button {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Submit Button */
+button[type="submit"] {
+    background-color: cyan;
+    color: black;
+    box-shadow: 0 0 10px cyan;
+}
+
+button[type="submit"]:hover {
+    background-color: #00cccc;
+    box-shadow: 0 0 20px cyan;
+}
+
+/* Download Button */
+button.download {
+    background-color: black;
+    color: cyan;
+    border: 2px solid cyan;
+    box-shadow: 0 0 8px cyan;
+}
+
+button.download:hover {
+    background-color: #002222;
+    color: white;
+    box-shadow: 0 0 15px cyan;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+    .container {
+        width: 90%;
+        height: 80px;
+    }
+
+    .container:hover,
+    .container.active {
+        height: 400px;
+    }
+}
