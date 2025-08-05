@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Login Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <!-- Background Hover Effect -->
+    <div id="glow-container"></div>
+
+    <!-- Login Form (Expands on Hover/Touch) -->
+    <div class="container" id="login-form">
+        <h2 class="form-title">Attendance Login Form</h2>
+        
+        <div class="form-wrapper">
+            <form action="/capture" method="POST">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required class="hacker-text">
+
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required class="hacker-text">
+
+                <button type="submit">Submit</button>
+            </form>
+
+            <a href="/download">
+                <button class="download">Download Excel</button>
+            </a>
+        </div>
+    </div>
+
+    <!-- JavaScript for Mobile & Glow Effect -->
+    <script>
+        // Enable hover effect on touch
+        const formContainer = document.getElementById("login-form");
+
+        formContainer.addEventListener("click", function () {
+            this.classList.add("active");
+        });
+
+        document.addEventListener("click", function (event) {
+            if (!formContainer.contains(event.target)) {
+                formContainer.classList.remove("active");
+            }
+        });
+
+        // Glow effect follows touch/mouse movement
+        document.addEventListener("mousemove", createGlow);
+        document.addEventListener("touchmove", function (event) {
+            createGlow(event.touches[0]); // Use first touch point
+        });
+
+        function createGlow(event) {
+            let glow = document.createElement("div");
+            glow.classList.add("glow-trail");
+            document.getElementById("glow-container").appendChild(glow);
+
+            glow.style.left = `${event.pageX}px`;
+            glow.style.top = `${event.pageY}px`;
+
+            setTimeout(() => { glow.remove(); }, 800);
+        }
+    </script>
+
+</body>
+</html>
